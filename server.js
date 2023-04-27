@@ -29,6 +29,16 @@ app.post('/addUser', function (req, res) {
     });
 })
 
+app.delete('/deleteUser', function (req, res) {
+    fs.readFile(__dirname + "/" + "user.json", "utf-8", function (err, data) {
+        data = JSON.parse( data );
+        delete data["user" + 2];
+
+        console.log ( data );
+        res.end (JSON.stringify(data)); 
+    });
+})
+
 
 app.get('./listusers', function (req, res) {
     fs.readFile(__dirname + "/" + "user.json", utf8 , function (err, data) {
